@@ -11,6 +11,21 @@ category=pd.cut(df.age, bins=[0,2,17,65,99], labels=['Todler/baby', 'Child', 'Ad
 df.insert(4,'Age Group', category)
 df.sample(10)
 
+#######################################################################################################
+
+#If you want a binary age classification :
+
+#category=pd.cut(df.age, bins=[0,17,99], labels=[ 'Child', 'Adult'])
+#df.insert(4,'Age Group', category)
+#df.sample(10)
+#categories=pd.Categorical(df['Age Group'],categories=['Adult','Child'],ordered=True)
+#AgeGroup,unique=pd.factorize(categories,sort=True)
+#df['Binary Age']=AgeGroup
+#df['Binary Age']
+#df.sample(10)
+
+#######################################################################################################
+
 # %%
 categories=pd.Categorical(df['findings'],categories=['normal','Sick'],ordered=True)
 findings,unique=pd.factorize(categories,sort=True)
