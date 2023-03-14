@@ -1,4 +1,14 @@
-# Image-Preprocessing
+
+
+# Classification of X-ray Images of the Lungs
+Using machine learning and Deep learning, the ability to group x-ray images of the lungs with healthy - unhealthy and multiple classification (grouping according to various lung diseases) has emerged as a very useful and time-saving way for medical radiologists and physicians.
+The basic steps required for the development of a suitable deep learning and machine learning algorithm are explained.
+
+* Various segmentation paths and deep learning algorithms are available for the analysis of lung images. The important steps to take before using them are described below.
+
+
+
+## Image-Preprocessing
 
 In medical image analysis, images must first be preprocessed. This process is very important in terms of the accuracy of the results to be obtained from the analysis. Noise removal, thresholding, blurring, resizing and histogram equalization are the basic image preprocessing methods.
 
