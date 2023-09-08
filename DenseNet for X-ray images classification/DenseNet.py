@@ -45,7 +45,6 @@ print("x_test shape : ",x_test.shape)
 print("y_test shape : ",y_test.shape)
 
 #Defining Convolutional Layer:
-
 def conv_layer(convolutional_x, filters):
     convolutional_x = BatchNormalization()(convolutional_x)
     convolutional_x = Activation('relu')(convolutional_x)
@@ -95,21 +94,21 @@ def dense_net(filters, growth_rate, classes, dense_block_size, layers_in_block):
     return Model(input_image, output)
 
 #Model Parameters
-dense_block_size = 3
-growth_rate = 3
+dense_block_size = 4
+growth_rate = 10
 classes = 1
 layers_in_block = 5
 model = dense_net(growth_rate * 2, growth_rate, classes, dense_block_size, layers_in_block)
 model.summary()
 
-epochs = 800
+epochs = 80
 batch_size = len(x_train)
 optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer = optimizer, loss = 'binary_crossentropy', metrics=['accuracy'])
 history=model.fit(x_train,y_train, epochs=epochs, batch_size=batch_size, shuffle=True)
 
 
-print("Generating plots...")
+print("Wait,Creating Plot")
 sys.stdout.flush()
 matplotlib.use("Agg")
 matplotlib.pyplot.style.use("ggplot")
@@ -126,6 +125,7 @@ matplotlib.pyplot.savefig("plot.png")
 #Let make a prediction
 y_predictions = model.predict(x_test)
 
+#Create a binary result of per prediction
 y_pred = y_predictions.copy()
 y_pred[y_pred <= 0.4] = 0
 y_pred[y_pred > 0.4] = 1
@@ -135,14 +135,14 @@ print("y_pred shape :",y_pred.shape)
 #Visiluaize model metrics
 
 #model accuracy vs loss
+E = epochs
 print("Generating plots...")
 sys.stdout.flush()
 matplotlib.use("Agg")
 matplotlib.pyplot.style.use("ggplot")
 matplotlib.pyplot.figure()
-N = epochs
-matplotlib.pyplot.plot(np.arange(0, N), history.history["loss"], label="train_loss")
-matplotlib.pyplot.plot(np.arange(0, N), history.history["accuracy"], label="train_accuracy")
+matplotlib.pyplot.plot(np.arange(0, E), history.history["loss"], label="train_loss")
+matplotlib.pyplot.plot(np.arange(0, E), history.history["accuracy"], label="train_accuracy")
 matplotlib.pyplot.title("X-ray Image Classification")
 matplotlib.pyplot.xlabel("Epoch #")
 matplotlib.pyplot.ylabel("Loss/Accuracy")
