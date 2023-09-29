@@ -45,5 +45,5 @@ densenet = DenseNet201(
 model = build_model(densenet ,lr = 1e-4)
 model.summary()
 
-model.save('rapordense.h5')
+model.save('DenseModel2.h5')
 
