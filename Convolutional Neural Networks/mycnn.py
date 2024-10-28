@@ -21,7 +21,6 @@ from keras import layers
 
 #The folder paths for training, validation, and test data are specified using train_path, val_path, and test_path
 
-
 train_path = "/home/syasun/labelled_data/train"
 val_path = "/home/syasun/labelled_data/validation"
 test_path ="/home/syasun/labelled_data/test"
